@@ -1,3 +1,4 @@
+const InputView = require("./inputView");
 const OutputView = require("./OutputView");
 const RandomNumbers = require("./RandomNumbers");
 
@@ -16,9 +17,19 @@ class BaseballGame {
   }
 
   getComputerNumbers() {
-    this.#computer = RandomNumbers.generate()
-    console.log(this.#computer)
+    this.#computer = RandomNumbers.generate();
+    this.getUserNumbers();
   }
+
+  getUserNumbers() {
+    InputView.getNumbers(this.handleUserNumbers);
+  }
+
+  handleUserNumbers = (numbers) => {
+    this.#user = numbers.split("").map((number) => {
+      return parseInt(number, 10);
+    });
+  };
 }
 
 module.exports = BaseballGame;
