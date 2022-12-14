@@ -2,7 +2,7 @@ const { Random } = require("@woowacourse/mission-utils");
 
 const RandomNumbers = {
   RANDOM_START_INCLUSIVE: 1,
-  RANDOM_END_INCLUSIVE: 10,
+  RANDOM_END_INCLUSIVE: 9,
   RANDOM_COUNT_INCLUSIVE: 3,
   generate() {
     return Random.pickUniqueNumbersInRange(
