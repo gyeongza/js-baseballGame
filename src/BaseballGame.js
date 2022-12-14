@@ -49,6 +49,9 @@ class BaseballGame {
     if (result.strike !== 0) {
       messages.push(`${result.strike}스트라이크`);
     }
+    if (result.strike === 3) {
+      OutputView.printWin();
+    }
     OutputView.printResult(messages);
     this.retry(result);
   }
@@ -57,7 +60,14 @@ class BaseballGame {
     if (result.strike !== 3) {
       return this.getUserNumbers();
     }
+
+    InputView.getOptions(this.handleOptions);
   }
+
+  handleOptions = (option) => {
+    if (option === "1") return this.getComputerNumbers();
+    if (option === "2") return OutputView.finishGame();
+  };
 }
 
 module.exports = BaseballGame;
