@@ -1,3 +1,4 @@
+const InputCheck = require("./InputCheck");
 const InputView = require("./inputView");
 const OutputView = require("./OutputView");
 const RandomNumbers = require("./RandomNumbers");
@@ -26,6 +27,7 @@ class BaseballGame {
   }
 
   handleUserNumbers = (numbers) => {
+    InputCheck.isValidInput(numbers);
     this.#user = numbers.split("").map((number) => {
       return parseInt(number, 10);
     });
