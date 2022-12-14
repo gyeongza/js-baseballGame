@@ -1,15 +1,15 @@
 const { Random } = require("@woowacourse/mission-utils");
 
 const RandomNumbers = {
-  RANDOM_START_INCLUSIVE: 1,
-  RANDOM_END_INCLUSIVE: 9,
-  RANDOM_COUNT_INCLUSIVE: 3,
   generate() {
-    return Random.pickUniqueNumbersInRange(
-      RandomNumbers.RANDOM_START_INCLUSIVE,
-      RandomNumbers.RANDOM_END_INCLUSIVE,
-      RandomNumbers.RANDOM_COUNT_INCLUSIVE
-    );
+    const numbers = [];
+    while (numbers.length < 3) {
+      const number = Random.pickNumberInRange(1, 9);
+      if (!numbers.includes(number)) {
+        numbers.push(number);
+      }
+    }
+    return numbers;
   },
 };
 
