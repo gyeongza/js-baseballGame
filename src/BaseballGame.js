@@ -20,6 +20,7 @@ class BaseballGame {
 
   getComputerNumbers() {
     this.#computer = RandomNumbers.generate();
+    console.log(this.#computer);
     this.getUserNumbers();
   }
 
@@ -38,7 +39,24 @@ class BaseballGame {
 
   compare() {
     const result = new CompareNumbers().compare(this.#computer, this.#user);
-    console.log(result.ball, result.strike);
+    let messages = [];
+    if (result.ball === 0 && result.strike === 0) {
+      messages.push("낫싱");
+    }
+    if (result.ball !== 0) {
+      messages.push(`${result.ball}볼`);
+    }
+    if (result.strike !== 0) {
+      messages.push(`${result.strike}스트라이크`);
+    }
+    OutputView.printResult(messages);
+    this.retry(result);
+  }
+
+  retry(result) {
+    if (result.strike !== 3) {
+      return this.getUserNumbers();
+    }
   }
 }
 
