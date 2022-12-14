@@ -3,6 +3,7 @@ const InputView = require("./inputView");
 const OutputView = require("./OutputView");
 const RandomNumbers = require("./RandomNumbers");
 const CompareNumbers = require("./CompareNumbers");
+const OptionCheck = require("./OptionCheck");
 
 class BaseballGame {
   #computer;
@@ -20,7 +21,6 @@ class BaseballGame {
 
   getComputerNumbers() {
     this.#computer = RandomNumbers.generate();
-    console.log(this.#computer);
     this.getUserNumbers();
   }
 
@@ -65,6 +65,7 @@ class BaseballGame {
   }
 
   handleOptions = (option) => {
+    OptionCheck.isValidInput(option);
     if (option === "1") return this.getComputerNumbers();
     if (option === "2") return OutputView.finishGame();
   };
