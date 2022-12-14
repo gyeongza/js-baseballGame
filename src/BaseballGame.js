@@ -1,5 +1,5 @@
-const { Console } = require("@woowacourse/mission-utils");
 const OutputView = require("./OutputView");
+const RandomNumbers = require("./RandomNumbers");
 
 class BaseballGame {
   #computer;
@@ -12,6 +12,12 @@ class BaseballGame {
 
   startGame() {
     OutputView.printStart();
+    this.getComputerNumbers();
+  }
+
+  getComputerNumbers() {
+    this.#computer = RandomNumbers.generate()
+    console.log(this.#computer)
   }
 }
 
